@@ -1,0 +1,361 @@
+[
+    {
+        "id": "f802c744da6d92d2",
+        "type": "context-get",
+        "z": "40394146ae526459",
+        "name": "get global.{{msg.topic}}",
+        "source": "{{msg.topic}}",
+        "sourceType": "global",
+        "destination": "payload",
+        "destinationType": "msg",
+        "x": 720,
+        "y": 420,
+        "wires": [
+            [
+                "3255699258bbbc86"
+            ]
+        ]
+    },
+    {
+        "id": "dceaf8bbb510f276",
+        "type": "context-set",
+        "z": "40394146ae526459",
+        "name": "set flow.{{msg.topic}}=msg.payload",
+        "source": "payload",
+        "sourceType": "msg",
+        "destination": "{{msg.topic}}",
+        "destinationType": "flow",
+        "x": 760,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "3255699258bbbc86",
+        "type": "debug",
+        "z": "40394146ae526459",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "9b29399d60d99b46",
+        "type": "context-get",
+        "z": "40394146ae526459",
+        "name": "get flow.{{msg.topic}}",
+        "source": "{{msg.topic}}",
+        "sourceType": "flow",
+        "destination": "payload",
+        "destinationType": "msg",
+        "x": 720,
+        "y": 380,
+        "wires": [
+            [
+                "3255699258bbbc86"
+            ]
+        ]
+    },
+    {
+        "id": "44bc6a4bfadede5d",
+        "type": "context-get",
+        "z": "40394146ae526459",
+        "name": "get flow.var2",
+        "source": "var2",
+        "sourceType": "flow",
+        "destination": "payload",
+        "destinationType": "msg",
+        "x": 690,
+        "y": 460,
+        "wires": [
+            [
+                "3255699258bbbc86"
+            ]
+        ]
+    },
+    {
+        "id": "bcf71efaa6f785af",
+        "type": "context-get",
+        "z": "40394146ae526459",
+        "name": "get global.var2",
+        "source": "var2",
+        "sourceType": "global",
+        "destination": "payload",
+        "destinationType": "msg",
+        "x": 700,
+        "y": 500,
+        "wires": [
+            [
+                "3255699258bbbc86"
+            ]
+        ]
+    },
+    {
+        "id": "b23363eb7fc9465c",
+        "type": "change",
+        "z": "40394146ae526459",
+        "name": "msg.topic=var1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "var1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 400,
+        "wires": [
+            [
+                "9b29399d60d99b46",
+                "f802c744da6d92d2"
+            ]
+        ]
+    },
+    {
+        "id": "b69a1a71c8be18fe",
+        "type": "inject",
+        "z": "40394146ae526459",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 460,
+        "wires": [
+            [
+                "b23363eb7fc9465c",
+                "ad0dfb57bd283e0e",
+                "3c9e2dfa86868c95"
+            ]
+        ]
+    },
+    {
+        "id": "15e655b18fae2f34",
+        "type": "context-set",
+        "z": "40394146ae526459",
+        "name": "set global.{{msg.topic}}=msg.payload",
+        "source": "payload",
+        "sourceType": "msg",
+        "destination": "{{msg.topic}}",
+        "destinationType": "global",
+        "x": 770,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "8b386a27e4763dde",
+        "type": "context-set",
+        "z": "40394146ae526459",
+        "name": "set flow.var2=var2_value",
+        "source": "var2_value",
+        "sourceType": "str",
+        "destination": "var2",
+        "destinationType": "flow",
+        "x": 730,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "7b6669ea6d9d34b4",
+        "type": "context-set",
+        "z": "40394146ae526459",
+        "name": "set global.var2=var2_value",
+        "source": "var2_value",
+        "sourceType": "str",
+        "destination": "var2",
+        "destinationType": "global",
+        "x": 740,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "97c4d84bf9ac3d16",
+        "type": "change",
+        "z": "40394146ae526459",
+        "name": "msg.topic=var1 msg.payload=timestamp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "var1",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 60,
+        "wires": [
+            [
+                "dceaf8bbb510f276",
+                "15e655b18fae2f34"
+            ]
+        ]
+    },
+    {
+        "id": "aecc2e23102af3ca",
+        "type": "inject",
+        "z": "40394146ae526459",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "97c4d84bf9ac3d16",
+                "738051631435e3d5",
+                "7bb018ca31b24241"
+            ]
+        ]
+    },
+    {
+        "id": "df6730c550b8c127",
+        "type": "context-set",
+        "z": "40394146ae526459",
+        "name": "set flow.var.{{msg.topic}}=msg.payload",
+        "source": "payload",
+        "sourceType": "msg",
+        "destination": "var.{{msg.topic}}",
+        "destinationType": "flow",
+        "x": 770,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "7bb018ca31b24241",
+        "type": "change",
+        "z": "40394146ae526459",
+        "name": "msg.topic=subvar msg.payload=timestamp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "subvar",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "df6730c550b8c127"
+            ]
+        ]
+    },
+    {
+        "id": "3c9e2dfa86868c95",
+        "type": "change",
+        "z": "40394146ae526459",
+        "name": "msg.topic=subvar",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "subvar",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 540,
+        "wires": [
+            [
+                "87d3f4bfb063e8de"
+            ]
+        ]
+    },
+    {
+        "id": "87d3f4bfb063e8de",
+        "type": "context-get",
+        "z": "40394146ae526459",
+        "name": "get flow.var.{{msg.topic}}",
+        "source": "var.{{msg.topic}}",
+        "sourceType": "flow",
+        "destination": "payload",
+        "destinationType": "msg",
+        "x": 730,
+        "y": 540,
+        "wires": [
+            [
+                "3255699258bbbc86"
+            ]
+        ]
+    },
+    {
+        "id": "738051631435e3d5",
+        "type": "junction",
+        "z": "40394146ae526459",
+        "x": 240,
+        "y": 140,
+        "wires": [
+            [
+                "7b6669ea6d9d34b4",
+                "8b386a27e4763dde"
+            ]
+        ]
+    },
+    {
+        "id": "ad0dfb57bd283e0e",
+        "type": "junction",
+        "z": "40394146ae526459",
+        "x": 240,
+        "y": 480,
+        "wires": [
+            [
+                "bcf71efaa6f785af",
+                "44bc6a4bfadede5d"
+            ]
+        ]
+    }
+]

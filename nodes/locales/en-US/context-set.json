@@ -1,0 +1,8 @@
+{
+    "context-set": {
+        "label": {
+            "source": "Value",
+            "destination": "Variable"
+        }
+    }
+}
