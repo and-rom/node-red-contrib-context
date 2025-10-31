@@ -26,7 +26,7 @@ module.exports = function(RED) {
 
             let variable = utils.mustache(msg, node.source);
 
-            if (variable) {
+            if (typeof variable !== undefined) {
                 let value = getContextVariable(variable, node.sourceType);
                 let property = node.destination;
 
