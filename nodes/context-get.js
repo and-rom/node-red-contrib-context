@@ -34,12 +34,13 @@ module.exports = function(RED) {
                     RED.util.setMessageProperty(msg, property, value, true);
                     RED.util.setMessageProperty(msg, 'context', node.sourceType, false);
 
-                    send(msg);
                 } else
                     node.warn("Variable is not set", msg);
             } else {
                 node.error("Can't parse source value", msg);
             }
+
+            send(msg);
 
             if (done) {done();}
         });
