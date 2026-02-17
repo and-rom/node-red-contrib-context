@@ -30,7 +30,7 @@ module.exports = function(RED) {
                 let value = getContextVariable(variable, node.sourceType);
                 let property = node.destination;
 
-                if (value) {
+                if (typeof value !== undefined) {
                     RED.util.setMessageProperty(msg, property, value, true);
                     RED.util.setMessageProperty(msg, 'context', node.sourceType, false);
 
